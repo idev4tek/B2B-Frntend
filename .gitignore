@@ -1,12 +1,16 @@
-node_modules
 # dependencies
+node_modules/
 
-# build
+# build output
 dist/
 .angular/
 
-# environment
+# environment files
 .env
+
+# editor
+.vscode/
+!.vscode/extensions.json
 
 # logs
 npm-debug.log*
