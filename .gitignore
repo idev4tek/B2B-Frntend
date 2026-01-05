@@ -1,1 +1,12 @@
 node_modules
+# dependencies
+
+# build
+dist/
+.angular/
+
+# environment
+.env
+
+# logs
+npm-debug.log*
