@@ -1,0 +1,40 @@
+<div class="min-h-screen bg-gray-50 overflow-x-hidden">
+  <div class="flex">
+
+    <!-- Sidebar -->
+  <div
+  class=" sidebar
+    fixed inset-y-0 left-0
+    w-[280px] bg-white
+    z-[2147483646]
+    transform transition-transform duration-300
+    -translate-x-full lg:translate-x-0
+  "
+>
+  <app-sidebar></app-sidebar>
+</div>
+
+
+    <!-- Main -->
+    <div class="flex-1 lg:ml-[280px] flex flex-col min-w-0">
+
+      <!-- Header -->
+      <header class="sticky top-0 z-50 bg-white">
+        <app-header></app-header>
+      </header>
+
+      <!-- Content -->
+      <main class="flex-1 p-4 sm:p-6 overflow-y-auto overflow-x-hidden">
+        <p class="text-xl sm:text-2xl font-bold mb-4">Dashboard</p>
+
+        <app-sale></app-sale>
+
+        <!-- Mobile bottom menu only -->
+        <div class="">
+          <app-menu-bottom></app-menu-bottom>
+        </div>
+      </main>
+
+    </div>
+  </div>
+</div>

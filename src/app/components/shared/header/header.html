@@ -1,0 +1,71 @@
+<header class="w-full bg-white px-4 lg:px-6 py-4 header ">
+  <div class="flex items-center justify-between gap-4">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-2 shrink-0">
+      <img src="public/logos.png" alt="Logo" class="h-14  ">
+    </div>
+
+    <!-- Search (hide on mobile) -->
+    <div class="hidden md:flex flex-1 max-w-xl">
+      <div class="relative w-full">
+        <span class="absolute inset-y-0 left-4 flex items-center text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </span>
+        <input
+          type="text"
+          placeholder="Search here..."
+          class="w-full rounded-full bg-[#0f2457] py-3 pl-12 pr-4 text-sm text-white outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+      </div>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-4 lg:gap-6">
+
+      <!-- Language -->
+      <button class="flex items-center gap-2 text-sm ">
+        <img src="public/united2255-c7lo.svg" alt="" class="h-7 lg:h-8">
+        <span class="hidden lg:inline">Eng (US)</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+
+      <!-- Notification -->
+      <div class="relative">
+        <button class="p-2 rounded-lg bg-indigo-500 hover:bg-gray-100">
+          <svg class="w-5 h-5 " fill="none" stroke="currentColor"
+            stroke-width="2" viewBox="0 0 24 24">
+            <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+            <path d="M13.73 21a2 2 0 01-3.46 0" />
+          </svg>
+        </button>
+        <span class="absolute -top-1 -right-1 h-2 w-2 rounded-full bg-red-500"></span>
+      </div>
+
+      <!-- User -->
+      <div class="flex items-center gap-2 lg:gap-3 cursor-pointer">
+        <img
+          src="public/rectangle13932257-mwiw-200h.png"
+          alt="User"
+          class="w-9 h-9 lg:w-10 lg:h-10 rounded-full object-cover"
+        />
+        <div class="hidden lg:block leading-tight">
+          <p class="text-sm font-semibold ">Musfiq</p>
+          <p class="text-xs ">Admin</p>
+        </div>
+        <svg class="hidden lg:block w-4 h-4 " fill="none" stroke="currentColor"
+          stroke-width="2" viewBox="0 0 24 24">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</header>

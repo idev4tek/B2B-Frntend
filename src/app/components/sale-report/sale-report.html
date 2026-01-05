@@ -1,0 +1,163 @@
+<!-- Sales Report -->
+<div class="bg-white rounded-[24px] sm:rounded-[32px] p-4 sm:p-8 shadow-sm">
+
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 sm:mb-8">
+    <h2 class="text-lg sm:text-xl font-semibold text-[#0B0D5C]">
+      Sales Report
+    </h2>
+
+    <!-- Legend -->
+    <div class="flex flex-wrap gap-4 sm:gap-8 text-xs sm:text-sm text-slate-600">
+      <div class="flex items-center gap-2">
+        <span class="h-3 w-3 rounded-full bg-blue-500"></span>
+        <span>Total Exposure</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="h-3 w-3 rounded-full bg-rose-400"></span>
+        <span>Non-Performing</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="h-3 w-3 rounded-full bg-green-500"></span>
+        <span>Performing</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CHART (MOBILE SCROLL) ================= -->
+  <div class="overflow-x-auto md:overflow-x-hidden">
+    <div class="relative h-[280px] sm:h-[360px] min-w-[720px] md:min-w-full">
+
+      <!-- Y Axis -->
+      <div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs sm:text-sm text-slate-400">
+        <span>180</span>
+        <span>150</span>
+        <span>120</span>
+        <span>90</span>
+        <span>60</span>
+        <span>30</span>
+        <span>0</span>
+      </div>
+
+      <!-- Grid Lines -->
+      <div class="absolute left-8 sm:left-10 right-0 top-0 bottom-0 flex flex-col justify-between pointer-events-none">
+        <div class="border-t border-slate-200"></div>
+        <div class="border-t border-slate-200"></div>
+        <div class="border-t border-slate-200"></div>
+        <div class="border-t border-slate-200"></div>
+        <div class="border-t border-slate-200"></div>
+        <div class="border-t border-slate-200"></div>
+        <div class="border-t border-slate-200"></div>
+      </div>
+
+      <!-- Bars -->
+      <div class="ml-8 sm:ml-10 h-full grid grid-cols-12 items-end gap-4 sm:gap-6 relative z-10">
+
+        <!-- Jan -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">200 m</span>
+          <div class="w-7 sm:w-10 h-[120px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Jan 24</span>
+        </div>
+
+        <!-- Feb -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">320 m</span>
+          <div class="w-7 sm:w-10 h-[140px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Feb 24</span>
+        </div>
+
+        <!-- Mar -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">410 m</span>
+          <div class="w-7 sm:w-10 h-[180px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Mar 24</span>
+        </div>
+
+        <!-- Apr -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">150 m</span>
+          <div class="w-7 sm:w-10 h-[90px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Apr 24</span>
+        </div>
+
+        <!-- May -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">280 m</span>
+          <div class="w-7 sm:w-10 h-[130px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">May 24</span>
+        </div>
+
+        <!-- Jun -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">360 m</span>
+          <div class="w-7 sm:w-10 h-[160px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Jun 24</span>
+        </div>
+
+        <!-- Jul -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">220 m</span>
+          <div class="w-7 sm:w-10 h-[110px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Jul 24</span>
+        </div>
+
+        <!-- Aug -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">390 m</span>
+          <div class="w-7 sm:w-10 h-[170px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Aug 24</span>
+        </div>
+
+        <!-- Sep -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">310 m</span>
+          <div class="w-7 sm:w-10 h-[145px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Sep 24</span>
+        </div>
+
+        <!-- Oct -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">270 m</span>
+          <div class="w-7 sm:w-10 h-[125px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Oct 24</span>
+        </div>
+
+        <!-- Nov -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">420 m</span>
+          <div class="w-7 sm:w-10 h-[190px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Nov 24</span>
+        </div>
+
+        <!-- Dec -->
+        <div class="flex flex-col items-center gap-1 sm:gap-2">
+          <span class="text-indigo-500 text-xs sm:text-sm">380 m</span>
+          <div class="w-7 sm:w-10 h-[175px] bg-indigo-500 rounded-lg"></div>
+          <span class="text-xs sm:text-sm text-slate-500">Dec 24</span>
+        </div>
+
+      </div>
+
+
+      <!-- Lines -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none px-2" viewBox="0 0 100 100"
+        preserveAspectRatio="none">
+
+        <!-- Area -->
+        <path d="M0 55 C 15 45, 25 35, 35 50 S 55 25, 70 30 S 85 45, 100 55
+             L100 70 C 85 65, 70 60, 55 70 S 35 50, 25 55 S 15 70, 0 70 Z" fill="#f5fbff" />
+
+        <!-- Performing -->
+        <path d="M0 55 C 15 45, 25 35, 35 50 S 55 25, 70 30 S 85 45, 100 55" fill="none" stroke="#22c55e"
+          stroke-width="1" />
+
+        <!-- Non Performing -->
+        <path d="M0 70 C 15 70, 25 55, 35 50 S 55 70, 70 60 S 85 65, 100 70" fill="none" stroke="#fb7185"
+          stroke-width="1" />
+
+      </svg>
+
+    </div>
+  </div>
+</div>

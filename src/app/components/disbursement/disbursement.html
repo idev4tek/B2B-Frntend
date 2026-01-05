@@ -1,0 +1,494 @@
+<div class="min-h-screen bg-gray-50">
+    <div class="flex">
+
+        <!-- Sidebar -->
+        <div class="hidden lg:block fixed inset-y-0 left-0 w-[280px] bg-white z-40">
+            <app-sidebar></app-sidebar>
+        </div>
+
+        <!-- Main -->
+        <div class="flex-1 lg:ml-[280px] flex flex-col">
+
+            <!-- Header (TOP LAYER) -->
+            <header class=" z-50 bg-white shadow-sm">
+                <app-header></app-header>
+            </header>
+
+            <!-- Content -->
+            <main class="flex-1 p-4 sm:p-6 overflow-y-auto overflow-x-hidden">
+
+                <!-- Page Wrapper -->
+                <div class="bg-[#FAFAFA] rounded-[20px] p-4 sm:p-6">
+
+                    <!-- Header -->
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+                        <h1 class="text-lg sm:text-xl font-semibold text-[#444A6D]">
+                            Disbursement
+                        </h1>
+
+                        <button
+                            class="bg-indigo-500 text-white text-sm px-4 py-2 rounded-lg hover:bg-indigo-600 w-full sm:w-auto"
+                            (click)="addNewFacility()">
+                            + Add New
+                        </button>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="bg-white rounded-[16px] p-4 mb-4 shadow-sm">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md">
+                            <div>
+                                <label class="block text-xs text-[#444A6D] mb-1">Borrower</label>
+                                <select class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm">
+                                    <option>Select</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs text-[#444A6D] mb-1">Facility</label>
+                                <select class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm">
+                                    <option>Select</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Table -->
+                    <div class="hidden md:block">
+                        <div *ngFor="let row of paginatedFacilities"
+                            class="grid grid-cols-12 items-center px-4 py-3 mb-2 shadow-sm rounded-[16px] bg-white text-sm text-[#444A6D]">
+
+                            <div class="col-span-3">{{ row.facilityName }}</div>
+                            <div class="col-span-1">{{ row.phase }}</div>
+                            <div class="col-span-2">{{ row.amount | number }}</div>
+                            <div class="col-span-2">{{ row.date | date:'yyyy-MM-dd' }}</div>
+
+                            <div class="col-span-2">
+                                <span class="px-3 py-1 text-xs rounded-full" [ngClass]="{
+              'bg-blue-100 text-[#5B93FF]': row.status === 'Active',
+              'bg-orange-100 text-orange-600': row.status === 'Draft'
+            }">
+                                    {{ row.status }}
+                                </span>
+                            </div>
+
+                            <div class="col-span-2 flex justify-center gap-2">
+                                <img src="/public/1.png" class="h-8 w-8 cursor-pointer" (click)="openEditFacility(row)">
+                                <img src="/public/2.png" class="h-8 w-8 cursor-pointer" (click)="openRepaymentList()">
+                                <img src="/public/3.png" class="h-8 w-8">
+                                <img src="/public/4.png" class="h-8 w-8 cursor-pointer" (click)="openAssuredIncom()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Cards -->
+                    <div class="md:hidden space-y-3">
+                        <div *ngFor="let row of paginatedFacilities"
+                            class="bg-white rounded-[16px] p-4 shadow-sm text-sm text-[#444A6D] space-y-2">
+
+                            <div class="font-semibold">{{ row.facilityName }}</div>
+
+                            <div class="flex justify-between text-xs">
+                                <span>Phase</span>
+                                <span>{{ row.phase }}</span>
+                            </div>
+
+                            <div class="flex justify-between text-xs">
+                                <span>Amount</span>
+                                <span>{{ row.amount | number }}</span>
+                            </div>
+
+                            <div class="flex justify-between text-xs">
+                                <span>Date</span>
+                                <span>{{ row.date | date:'yyyy-MM-dd' }}</span>
+                            </div>
+
+                            <span class="inline-block px-3 py-1 text-xs rounded-full" [ngClass]="{
+            'bg-blue-100 text-[#5B93FF]': row.status === 'Active',
+            'bg-orange-100 text-orange-600': row.status === 'Draft'
+          }">
+                                {{ row.status }}
+                            </span>
+
+                            <div class="flex gap-3 pt-2">
+                                <img src="/public/1.png" class="h-7 w-7" (click)="openEditFacility(row)">
+                                <img src="/public/2.png" class="h-7 w-7" (click)="openRepaymentList()">
+                                <img src="/public/3.png" class="h-7 w-7">
+                                <img src="/public/4.png" class="h-7 w-7" (click)="openAssuredIncom()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div
+                        class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs text-[#8A8FB9] mt-4">
+                        <span>
+                            Showing {{ startRecord }}–{{ endRecord }} of {{ totalRecords }}
+                        </span>
+
+                        <div class="flex items-center gap-2">
+                            <button class="h-7 w-7 border rounded-md" (click)="prevPage()"
+                                [disabled]="currentPage === 1">‹</button>
+
+                            <button class="h-7 w-7 border rounded-md" (click)="nextPage()"
+                                [disabled]="endRecord === totalRecords">›</button>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- Edit Facility Details model  -->
+<div *ngIf="showEditFacility"
+  class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center overflow-y-auto px-3 sm:px-6">
+
+  <div
+    class="relative bg-white w-full max-w-5xl rounded-[20px] sm:rounded-[24px]
+           p-5 sm:p-8 lg:p-10 my-6">
+
+    <!-- Close -->
+    <button
+      class="absolute top-4 right-4 sm:top-6 sm:right-6
+             h-9 w-9 sm:h-10 sm:w-10
+             flex items-center justify-center rounded-full border"
+      (click)="closeAll()">
+      ✕
+    </button>
+
+    <!-- Title -->
+    <h2
+      class="text-xl sm:text-2xl lg:text-4xl font-bold text-[#0B0D5C] mb-6 sm:mb-10">
+      {{ isCreateMode ? 'Add Facility' : 'Edit Facility Details' }}
+    </h2>
+
+    <!-- ================= TABLE FIELDS ================= -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mb-6 sm:mb-10">
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Facility Name</label>
+        <input type="text" [(ngModel)]="selectedFacility.facilityName"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Phase</label>
+        <input type="text" [(ngModel)]="selectedFacility.phase"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Amount</label>
+        <input type="number" [(ngModel)]="selectedFacility.amount"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Date</label>
+        <input type="date" [(ngModel)]="selectedFacility.date"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Status</label>
+        <select [(ngModel)]="selectedFacility.status"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+          <option value="Draft">Draft</option>
+          <option value="Active">Active</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- ================= FACILITY DETAILS ================= -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-6 sm:mb-8">
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Grace Period</label>
+        <input type="number" [(ngModel)]="selectedFacility.gracePeriod"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">No. of Installments</label>
+        <input type="number" [(ngModel)]="selectedFacility.installmentCount"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Frequency</label>
+        <select [(ngModel)]="selectedFacility.frequency"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+          <option value="Quarterly">Quarterly</option>
+          <option value="Monthly">Monthly</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Spread Rate</label>
+        <input type="number" [(ngModel)]="selectedFacility.spreadRate"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+      </div>
+
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mb-8 sm:mb-16">
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Kibor Reset Period</label>
+        <input type="number" [(ngModel)]="selectedFacility.kiborResetPeriod"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-1 sm:mb-2">Current Kibor Rate</label>
+        <input type="number" [(ngModel)]="selectedFacility.kiborRate"
+          class="w-full h-11 sm:h-14 rounded-xl border bg-[#FAFAFB] px-3 sm:px-4 text-sm sm:text-lg">
+      </div>
+
+    </div>
+
+    <!-- ================= ACTIONS ================= -->
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-6">
+      <button (click)="saveFacility()"
+        class="w-full sm:w-auto px-8 py-3 sm:px-10 sm:py-4 rounded-xl bg-indigo-500 text-white text-base sm:text-lg font-semibold">
+        Save
+      </button>
+
+      <button (click)="closeAll()"
+        class="w-full sm:w-auto px-8 py-3 sm:px-10 sm:py-4 rounded-xl bg-red-500 text-white text-base sm:text-lg font-semibold">
+        Cancel
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!-- repayment model -->
+<div *ngIf="showRepaymentList"
+  class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center overflow-y-auto px-3 sm:px-6">
+
+  <div
+    class="relative bg-white w-full max-w-4xl rounded-[18px] sm:rounded-[22px]
+           p-4 sm:p-8 my-6">
+
+    <!-- Close -->
+    <button (click)="closeAll()"
+      class="absolute top-4 right-4 sm:top-5 sm:right-5
+             h-9 w-9 flex items-center justify-center rounded-full border text-lg">
+      ×
+    </button>
+
+    <h2 class="text-xl sm:text-3xl font-bold text-[#0B0D5C] mb-6 sm:mb-8">
+      Repayment
+    </h2>
+
+    <!-- Desktop Header -->
+    <div class="hidden md:grid grid-cols-12 text-sm font-medium text-[#444A6D] mb-3 px-4">
+      <div class="col-span-2">Installment</div>
+      <div class="col-span-3">Due Date</div>
+      <div class="col-span-3">Due Amount</div>
+      <div class="col-span-2">Status</div>
+      <div class="col-span-2 text-right">Action</div>
+    </div>
+
+    <!-- Desktop Rows -->
+    <div class="hidden md:block space-y-3">
+      <div *ngFor="let r of repayments"
+        class="grid grid-cols-12 items-center px-5 py-4 rounded-[18px] border">
+
+        <div class="col-span-2 font-medium">{{ r.installment }}</div>
+        <div class="col-span-3">{{ r.date }}</div>
+        <div class="col-span-3">{{ r.amount | number }}</div>
+
+        <div class="col-span-2">
+          <span class="px-4 py-1.5 rounded-full text-sm"
+            [ngClass]="{
+              'bg-orange-100 text-orange-500': r.status === 'Draft',
+              'bg-green-100 text-green-500': r.status === 'Paid'
+            }">
+            {{ r.status }}
+          </span>
+        </div>
+
+        <div class="col-span-2 flex justify-end gap-3">
+          <span class="h-9 w-9 rounded-full bg-purple-100 text-purple-500 flex items-center justify-center">$</span>
+          <span class="h-9 w-9 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center cursor-pointer"
+            (click)="openEditRepayment(r)">✎</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Cards -->
+    <div class="md:hidden space-y-3">
+      <div *ngFor="let r of repayments"
+        class="border rounded-[16px] p-4 space-y-2">
+
+        <div class="font-semibold">Installment {{ r.installment }}</div>
+
+        <div class="flex justify-between text-xs">
+          <span>Date</span>
+          <span>{{ r.date }}</span>
+        </div>
+
+        <div class="flex justify-between text-xs">
+          <span>Amount</span>
+          <span>{{ r.amount | number }}</span>
+        </div>
+
+        <span class="inline-block px-3 py-1 text-xs rounded-full"
+          [ngClass]="{
+            'bg-orange-100 text-orange-500': r.status === 'Draft',
+            'bg-green-100 text-green-500': r.status === 'Paid'
+          }">
+          {{ r.status }}
+        </span>
+
+        <div class="flex gap-3 pt-2">
+          <span class="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center">$</span>
+          <span class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center cursor-pointer"
+            (click)="openEditRepayment(r)">✎</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Edit Repayment Modal -->
+<div *ngIf="showEditRepayment"
+  class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center overflow-y-auto px-3 sm:px-6">
+
+  <div
+    class="relative bg-white w-full max-w-4xl rounded-[20px] sm:rounded-[24px]
+           p-5 sm:px-12 sm:py-10 my-6">
+
+    <!-- Close -->
+    <button (click)="closeAll()"
+      class="absolute top-4 right-4 sm:top-6 sm:right-6
+             h-9 w-9 sm:h-10 sm:w-10 rounded-full border flex items-center justify-center text-lg">
+      ×
+    </button>
+
+    <h2 class="text-xl sm:text-4xl font-bold text-[#0B0D5C] mb-8 sm:mb-14">
+      Edit Repayment
+    </h2>
+
+    <!-- Form -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-10 mb-8 sm:mb-16">
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-2">Date</label>
+        <input type="date" [(ngModel)]="selectedRepayment.date"
+          class="w-full h-11 sm:h-[68px] rounded-xl sm:rounded-2xl border px-4 sm:px-6 text-sm sm:text-lg" />
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-2">Transaction No.</label>
+        <input type="text" [(ngModel)]="selectedRepayment.transactionNo"
+          class="w-full h-11 sm:h-[68px] rounded-xl sm:rounded-2xl border px-4 sm:px-6 text-sm sm:text-lg" />
+      </div>
+
+      <div>
+        <label class="block text-sm sm:text-lg mb-2">Amount</label>
+        <input type="number" [(ngModel)]="selectedRepayment.amount"
+          class="w-full h-11 sm:h-[68px] rounded-xl sm:rounded-2xl border px-4 sm:px-6 text-sm sm:text-lg" />
+      </div>
+
+    </div>
+
+    <!-- Actions -->
+    <div class="flex flex-col sm:flex-row gap-3 sm:gap-8">
+      <button (click)="saveRepayment()"
+        class="w-full sm:w-auto px-10 py-3 sm:px-14 sm:py-4 rounded-xl sm:rounded-2xl bg-indigo-500 text-white">
+        OK
+      </button>
+
+      <button (click)="closeAll()"
+        class="w-full sm:w-auto px-10 py-3 sm:px-14 sm:py-4 rounded-xl sm:rounded-2xl bg-red-500 text-white">
+        Cancel
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+<div *ngIf="showAssuredIncom"
+  class="fixed inset-0 bg-black/40 z-50 flex items-center justify-center
+         overflow-y-auto px-3 sm:px-6">
+
+  <div
+    class="relative bg-white w-full max-w-4xl rounded-[20px] sm:rounded-[24px]
+           p-5 sm:px-12 sm:py-10 my-6">
+
+    <!-- Close -->
+    <button (click)="closeAll()"
+      class="absolute top-4 right-4 h-8 w-8 rounded-full border
+             flex items-center justify-center text-sm">
+      ✕
+    </button>
+
+    <h2 class="text-xl sm:text-3xl font-bold text-[#0B0D5C] mb-6">
+      Accrued Income
+    </h2>
+
+    <!-- ✅ MOBILE X-SCROLL ONLY -->
+    <div class="overflow-x-auto md:overflow-x-hidden">
+      <div class="min-w-[900px] md:min-w-full">
+
+        <!-- Header -->
+        <div class="grid grid-cols-7 text-xs font-medium text-slate-500 mb-3 px-2">
+          <div>Accrued Income</div>
+          <div>Date</div>
+          <div>Exposure Amount</div>
+          <div>Kibor Rate</div>
+          <div>Spread Rate</div>
+          <div>Accrued Amount</div>
+          <div>Status</div>
+        </div>
+
+        <!-- Rows -->
+        <div class="space-y-3 text-sm text-[#0B0D5C]">
+
+          <div class="grid grid-cols-7 items-center border rounded-[14px] px-5 py-4">
+            <div>200,000</div>
+            <div>12/12/2024</div>
+            <div>200,000</div>
+            <div>20%</div>
+            <div>20%</div>
+            <div>200,000</div>
+            <div>
+              <span class="px-3 py-1 rounded-full bg-orange-100 text-orange-500 text-xs">
+                Accrued
+              </span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-7 items-center border rounded-[14px] px-5 py-4">
+            <div>300,000</div>
+            <div>12/12/2024</div>
+            <div>300,000</div>
+            <div>20%</div>
+            <div>20%</div>
+            <div>300,000</div>
+            <div>
+              <span class="px-3 py-1 rounded-full bg-green-100 text-green-500 text-xs">
+                Received
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
