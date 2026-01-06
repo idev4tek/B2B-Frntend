@@ -1,0 +1,123 @@
+<div class="min-h-screen bg-gray-50">
+    <div class="flex">
+
+        <!-- Sidebar -->
+        <div class="hidden lg:block fixed inset-y-0 left-0 w-[280px] bg-white z-40">
+            <app-sidebar></app-sidebar>
+        </div>
+
+        <!-- Main -->
+        <div class="flex-1 lg:ml-[280px] flex flex-col">
+
+            <!-- Header (TOP LAYER) -->
+            <header class=" z-50 bg-white shadow-sm">
+                <app-header></app-header>
+            </header>
+
+            <!-- Content -->
+            <main class="flex-1 p-4 sm:p-6 overflow-y-auto overflow-x-hidden max-w-6xl">
+                <div class="text-xl font-bold mb-4">
+                    Onboarding
+                </div>
+             <!-- Tabs Wrapper -->
+<!-- Tabs Wrapper -->
+<div class="bg-gray-200 rounded-lg shadow p-2">
+  <div
+    class="flex gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide sm:flex-wrap sm:overflow-visible">
+
+    <!-- Corporate -->
+    <a
+      routerLink="onboarding/corporate"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [ngClass]="{
+        'bg-white text-blue-600': rlaCorporate.isActive,
+        'bg-gray-200 text-[#858585]': !rlaCorporate.isActive
+      }"
+      #rlaCorporate="routerLinkActive"
+      class="px-1 sm:px-4 py-0 sm:py-1 min-w-[5rem] sm:min-w-[8rem]
+             rounded text-[16px] font-semibold text-center transition">
+      Corporate
+    </a>
+
+    <!-- Risk & FATCA -->
+    <a
+      routerLink="risk-fatca"
+      routerLinkActive
+      [ngClass]="{
+        'bg-white text-blue-600': rlaRisk.isActive,
+        'bg-gray-200 text-[#858585]': !rlaRisk.isActive
+      }"
+      #rlaRisk="routerLinkActive"
+      class="px-1 sm:px-4 py-0 sm:py-1 min-w-[5rem] sm:min-w-[8rem]
+             rounded text-[16px] font-semibold text-center transition">
+      Risk & FATCA
+    </a>
+
+    <!-- UBOs -->
+    <a
+      routerLink="ubos"
+      routerLinkActive
+      [ngClass]="{
+        'bg-white text-blue-600': rlaUbos.isActive,
+        'bg-gray-200 text-[#858585]': !rlaUbos.isActive
+      }"
+      #rlaUbos="routerLinkActive"
+      class="px-1 sm:px-4 py-0 sm:py-1 min-w-[5rem] sm:min-w-[8rem]
+             rounded text-[16px] font-semibold text-center transition">
+      UBOs
+    </a>
+
+    <!-- Directors -->
+    <a
+      routerLink="directors"
+      routerLinkActive
+      [ngClass]="{
+        'bg-white text-blue-600': rlaDirectors.isActive,
+        'bg-gray-200 text-[#858585]': !rlaDirectors.isActive
+      }"
+      #rlaDirectors="routerLinkActive"
+      class="px-1 sm:px-4 py-0 sm:py-1 min-w-[5rem] sm:min-w-[8rem]
+             rounded text-[16px] font-semibold text-center transition">
+      Directors
+    </a>
+
+    <!-- Documents -->
+    <a
+      routerLink="documents"
+      routerLinkActive
+      [ngClass]="{
+        'bg-white text-blue-600': rlaDocs.isActive,
+        'bg-gray-200 text-[#858585]': !rlaDocs.isActive
+      }"
+      #rlaDocs="routerLinkActive"
+      class="px-1 sm:px-4 py-0 sm:py-1 min-w-[5rem] sm:min-w-[8rem]
+             rounded text-[16px] font-semibold text-center transition">
+      Documents
+    </a>
+
+    <!-- Review -->
+    <a
+      routerLink="review"
+      routerLinkActive
+      [ngClass]="{
+        'bg-white text-blue-600': rlaReview.isActive,
+        'bg-gray-200 text-[#858585]': !rlaReview.isActive
+      }"
+      #rlaReview="routerLinkActive"
+      class="px-1 sm:px-4 py-0 sm:py-1 min-w-[5rem] sm:min-w-[8rem]
+             rounded text-[16px] font-semibold text-center transition">
+      Review
+    </a>
+
+  </div>
+</div>
+
+
+
+
+                <router-outlet></router-outlet>
+            </main>
+        </div>
+    </div>
+</div>

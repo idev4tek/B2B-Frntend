@@ -1,1 +1,30 @@
+:root {
+    --primary-bg: linear-gradient(
+        90deg,
+        #0B1E4A 0%,
+        #142F6B 35%,
+        #1A357A 65%,
+        #2A4FA3 100%
+    );
+    --text-primary-color: #605BFF;
+
+}
+.bg-primary {
+    background: var(--primary-bg);
+    color: white;
+
+}
+.color-primary {
+    color: var(--text-primary-color);
+}
+.bg-secondary {
+    background-color: #605BFF;
+}
+.text-xl{
+    color: #151D48;
+}
+.bg-cancel{
+    background-color: #F23C3F;
+}
+
 @import "tailwindcss";

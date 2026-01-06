@@ -1,0 +1,362 @@
+<div class="min-h-screen bg-gray-50 overflow-x-hidden">
+  <div class="flex">
+
+    <!-- Sidebar -->
+  <div
+  class=" 
+    fixed inset-y-0 left-0
+    w-[280px] 
+    z-[2147483646]
+    transform transition-transform duration-300
+    -translate-x-full lg:translate-x-0 bg-primary
+  " 
+>
+<app-lead-sidebar></app-lead-sidebar>
+</div>
+
+
+    <!-- Main -->
+    <div class="flex-1 lg:ml-[280px] flex flex-col min-w-0">
+
+      <!-- Header -->
+      <header class="sticky top-0 z-50 bg-white">
+        <app-header></app-header>
+      </header>
+
+      <!-- Content -->
+      <main class="flex-1 p-4 sm:p-6 overflow-y-auto overflow-x-hidden">
+        <p class="text-xl sm:text-2xl font-bold mb-4">Dashboard</p>
+
+      <!-- Total Leads Section -->
+<section class="bg-white rounded-xl shadow-sm p-3">
+ 
+  <!-- Header -->
+  <h2 class="text-xl font-semibold  mb-2">
+    Total Leads <span class="text-2xl font-bold ml-2 color-primary">48</span>
+  </h2>
+
+  <!-- Cards -->
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-5">
+
+  <!-- Card 1 -->
+  <div class="relative rounded-xl p-3 bg-[#DCFCE7] min-h-[120px] min-w-[140px]">
+    <div class="absolute top-3 right-4 w-8 h-8 rounded-full bg-[#3CD856] flex items-center justify-center">
+      <img src="images/sale-icon.png" alt="" class="h-5 w-5 object-contain">
+    </div>
+    <div class="text-4xl font-bold text-slate-900">10</div>
+    <div class="mt-3 text-sm font-medium text-slate-700 leading-snug">
+      New Leads<br />Today
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="relative rounded-xl p-3 bg-[#FFE2E5] min-h-[120px] min-w-[140px]">
+    <div class="absolute top-3 right-4 w-8 h-8 rounded-full bg-[#FA5A7D] flex items-center justify-center">
+      <img src="images/term-sheet.png" alt="" class="h-5 w-5 object-contain">
+    </div>
+    <div class="text-4xl font-bold text-slate-900">05</div>
+    <div class="mt-3 text-sm font-medium text-slate-700 leading-snug">
+      Leads Awaiting<br />Term sheet
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="relative rounded-xl p-3 bg-[#E4E4FF] min-h-[120px] min-w-[140px]">
+    <div class="absolute top-3 right-4 w-8 h-8 rounded-full bg-[#8585FD] flex items-center justify-center">
+      <img src="images/approval.svg" alt="" class="h-5 w-5 object-contain">
+    </div>
+    <div class="text-4xl font-bold text-slate-900">10</div>
+    <div class="mt-3 text-sm font-medium text-slate-700 leading-snug">
+      Leads Awaiting<br />Approval
+    </div>
+  </div>
+
+  <!-- Card 4 -->
+  <div class="relative rounded-xl p-3 bg-[#FFF4DE] min-h-[120px] min-w-[140px]">
+    <div class="absolute top-3 right-4 w-8 h-8 rounded-full bg-[#FF947A] flex items-center justify-center">
+      <img src="images/proposal.png" alt="" class="h-5 w-5 object-contain">
+    </div>
+    <div class="text-4xl font-bold text-slate-900">07</div>
+    <div class="mt-3 text-sm font-medium text-slate-700 leading-snug">
+      Proposals Awaiting<br />Client Decision
+    </div>
+  </div>
+
+  <!-- Card 5 -->
+  <div class="relative rounded-xl p-3 bg-[#F3E8FF] min-h-[120px] min-w-[140px]">
+    <div class="absolute top-3 right-4 w-8 h-8 rounded-full bg-[#9A62D8] flex items-center justify-center">
+      <img src="images/open-leads.png" alt="" class="h-5 w-5 object-contain">
+    </div>
+    <div class="text-4xl font-bold text-slate-900">10</div>
+    <div class="mt-3 text-sm font-medium text-slate-700 leading-snug">
+      My Open<br />Leads
+    </div>
+  </div>
+
+  <!-- Card 6 -->
+  <div class="relative rounded-xl p-3 bg-cyan-100 min-h-[120px] min-w-[140px]">
+    <div class="absolute top-3 right-4 w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center">
+      <img src="images/pending.png" alt="" class="h-5 w-5 object-contain">
+    </div>
+    <div class="text-4xl font-bold text-slate-900">06</div>
+    <div class="mt-3 text-sm font-medium text-slate-700 leading-snug">
+      Pending<br />Approvals
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+
+        <div class="mt-4 overflow-x-auto">
+            <div class="title flex items-center justify-between ">
+    <h2 class="text-xl font-bold mb-4">Leads List</h2>
+    <button class="ml-4 bg-secondary text-white px-4 py-2 rounded-lg"> + Add New Lead</button>
+            </div>
+  <table class="w-full border-separate border-spacing-y-3">
+    
+    <!-- Table Head -->
+ <thead>
+  <tr class="bg-white border border-gray-200 rounded-xl">
+    <th class="rounded-l-xl px-4 py-3 w-10 text-center">
+      <input
+        type="checkbox"
+        class="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+      />
+    </th>
+
+    <th class="px-4 py-3 text-left text-sm font-bold text-slate-800">
+      Client Name
+    </th>
+
+    <th class="px-4 py-3 text-left text-sm font-bold text-slate-800">
+      Contact Name
+    </th>
+
+    <th class="px-4 py-3 text-left text-sm font-bold text-slate-800">
+      Contact Phone No.
+    </th>
+
+    <th class="px-4 py-3 text-left text-sm font-bold text-slate-800">
+      Contact Email
+    </th>
+
+    <!-- NEW COLUMN -->
+    <th class="px-4 py-3 text-left text-sm font-bold text-slate-800">
+      Source
+    </th>
+
+    <th class="px-4 py-3 text-left text-sm font-bold text-slate-800">
+      Status
+    </th>
+
+    <th class="rounded-r-xl px-4 py-3 text-right text-sm font-bold text-slate-800">
+      Action
+    </th>
+  </tr>
+</thead>
+
+
+    <!-- Table Body -->
+    <tbody>
+<tr class="bg-white border border-gray-200 rounded-xl">
+
+  <td class="rounded-l-xl px-4 py-3 text-center">
+    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+  </td>
+
+  <td class="px-4 py-3 text-sm  text-slate-700">
+    ABC Corp
+  </td>
+
+  <td class="px-4 py-3 text-sm text-slate-700">
+    John Doe
+  </td>
+
+  <td class="px-4 py-3 text-sm text-slate-700">
+    +92 300 1234567
+  </td>
+
+  <td class="px-4 py-3 text-sm text-slate-700">
+    john@abc.com
+  </td>
+
+  <!-- NEW SOURCE COLUMN -->
+  <td class="px-4 py-3 text-sm text-slate-700">
+    Website
+  </td>
+
+  <td class="px-4 py-3">
+    <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+      Active
+    </span>
+  </td>
+
+  <td class="rounded-r-xl px-4 py-3">
+    <div class="flex justify-end gap-3">
+
+      <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center">
+        <img src="images/edit.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
+        <img src="images/view.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-yellow-100 flex items-center justify-center">
+        <img src="images/user.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-teal-100 flex items-center justify-center">
+        <img src="images/send.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center">
+        <img src="images/file.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center">
+        <img src="images/files.png" class="w-4 h-4" />
+      </div>
+
+    </div>
+  </td>
+</tr>
+<tr class="bg-white border border-gray-200 rounded-xl">
+
+  <td class="rounded-l-xl px-4 py-3 text-center">
+    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+  </td>
+
+  <td class="px-4 py-3 text-sm  text-slate-700">
+    ABC Corp
+  </td>
+
+  <td class="px-4 py-3 text-sm text-slate-700">
+    John Doe
+  </td>
+
+  <td class="px-4 py-3 text-sm text-slate-700">
+    +92 300 1234567
+  </td>
+
+  <td class="px-4 py-3 text-sm text-slate-700">
+    john@abc.com
+  </td>
+
+  <!-- NEW SOURCE COLUMN -->
+  <td class="px-4 py-3 text-sm text-slate-700">
+    Website
+  </td>
+
+  <td class="px-4 py-3">
+    <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+      Active
+    </span>
+  </td>
+
+  <td class="rounded-r-xl px-4 py-3">
+    <div class="flex justify-end gap-3">
+
+      <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center">
+        <img src="images/edit.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
+        <img src="images/view.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-yellow-100 flex items-center justify-center">
+        <img src="images/user.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-teal-100 flex items-center justify-center">
+        <img src="images/send.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center">
+        <img src="images/file.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center">
+        <img src="images/files.png" class="w-4 h-4" />
+      </div>
+
+    </div>
+  </td>
+</tr>
+<tr class="bg-white border border-gray-200 rounded-xl">
+
+  <td class="rounded-l-xl px-4 py-3 text-center">
+    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+  </td>
+
+  <td class="px-4 py-3 text-sm  text-slate-700">
+    ABC Corp
+  </td>
+
+  <td class="px-4 py-3 text-sm text-slate-700">
+    John Doe
+  </td>
+
+  <td class="px-4 py-3 text-sm text-slate-700">
+    +92 300 1234567
+  </td>
+
+  <td class="px-4 py-3 text-sm text-slate-700">
+    john@abc.com
+  </td>
+
+  <!-- NEW SOURCE COLUMN -->
+  <td class="px-4 py-3 text-sm text-slate-700">
+    Website
+  </td>
+
+  <td class="px-4 py-3">
+    <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+      Active
+    </span>
+  </td>
+
+  <td class="rounded-r-xl px-4 py-3">
+    <div class="flex justify-end gap-3">
+
+      <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center">
+        <img src="images/edit.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
+        <img src="images/view.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-yellow-100 flex items-center justify-center">
+        <img src="images/user.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-teal-100 flex items-center justify-center">
+        <img src="images/send.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center">
+        <img src="images/file.png" class="w-4 h-4" />
+      </div>
+
+      <div class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center">
+        <img src="images/files.png" class="w-4 h-4" />
+      </div>
+
+    </div>
+  </td>
+</tr>
+
+    </tbody>
+
+  </table>
+</div>
+
+      </main>
+
+    </div>
+  </div>
+</div>

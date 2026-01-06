@@ -1,0 +1,106 @@
+
+<div class="bg-gray-100 p-6">
+
+  <div class="max-w-6xl mx-auto bg-white rounded-lg shadow p-6">
+
+
+    <!-- Section -->
+    <h2 class="text-lg font-semibold mb-4">Corporate Information</h2>
+
+    <!-- Form Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+      <input type="text" placeholder="Name of Institution" class="input" />
+      <input type="text" placeholder="Incorporation / Reg No." class="input" />
+      <input type="date" class="input" />
+      <input type="text" placeholder="NTN" class="input" />
+
+      <select class="input">
+        <option>Legal Status</option>
+      </select>
+
+      <select class="input">
+        <option>Company</option>
+      </select>
+
+      <!-- Type 1 -->
+      <div class="col-span-2 flex items-center gap-6">
+        <span class="text-sm font-medium">Type 1</span>
+        <label class="flex items-center gap-2 text-sm">
+          <input type="radio" name="type1" checked /> Public Limited
+        </label>
+        <label class="flex items-center gap-2 text-sm">
+          <input type="radio" name="type1" /> Private Limited
+        </label>
+      </div>
+
+      <!-- Type 2 -->
+      <div class="col-span-2 flex items-center gap-6">
+        <span class="text-sm font-medium">Type 2</span>
+        <label class="flex items-center gap-2 text-sm">
+          <input type="radio" name="type2" checked /> For-Profit
+        </label>
+        <label class="flex items-center gap-2 text-sm">
+          <input type="radio" name="type2" /> Not-for-profit
+        </label>
+      </div>
+
+      <!-- Type 3 -->
+      <div class="col-span-2 flex items-center gap-6">
+        <span class="text-sm font-medium">Type 3</span>
+        <label class="flex items-center gap-2 text-sm">
+          <input type="radio" name="type3" checked /> MFB
+        </label>
+        <label class="flex items-center gap-2 text-sm">
+          <input type="radio" name="type3" /> NBMF
+        </label>
+      </div>
+
+    </div>
+
+    <!-- Addresses -->
+    <h3 class="text-md font-semibold mt-6 mb-3">Addresses & Contact</h3>
+
+    <input type="text" placeholder="Registered Address" class="input mb-4" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <select class="input">
+        <option>City</option>
+      </select>
+      <select class="input">
+        <option>Residential Status</option>
+      </select>
+    </div>
+
+    <input type="text" placeholder="Mailing Address" class="input mb-4" />
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+      <select class="input">
+        <option>City</option>
+      </select>
+      <select class="input">
+        <option>Province</option>
+      </select>
+      <input type="text" placeholder="Contact Person Name" class="input" />
+      <input type="text" placeholder="Designation" class="input" />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <input type="text" placeholder="Mobile No." class="input" />
+      <input type="email" placeholder="Email Address" class="input" />
+    </div>
+
+    <!-- Actions -->
+    <div class="flex gap-3 mt-6">
+      <button class="bg-blue-600 text-white px-6 py-2 rounded text-sm">
+        Save & Continue
+      </button>
+      <button class="bg-red-500 text-white px-6 py-2 rounded text-sm">
+        Cancel
+      </button>
+    </div>
+
+  </div>
+
+
+</div>

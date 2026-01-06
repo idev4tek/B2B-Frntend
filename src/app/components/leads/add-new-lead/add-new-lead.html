@@ -1,0 +1,237 @@
+
+
+
+<div class="min-h-screen bg-gray-50 overflow-x-hidden">
+  <div class="flex">
+
+    <!-- Sidebar -->
+  <div
+  class=" 
+    fixed inset-y-0 left-0
+    w-[280px] 
+    z-[2147483646]
+    transform transition-transform duration-300
+    -translate-x-full lg:translate-x-0 bg-primary
+  " 
+>
+<app-lead-sidebar></app-lead-sidebar>
+</div>
+
+
+    <!-- Main -->
+    <div class="flex-1 lg:ml-[280px] flex flex-col min-w-0">
+
+      <!-- Header -->
+      <header class="sticky top-0 z-50 bg-white">
+        <app-header></app-header>
+      </header>
+
+      <!-- Content -->
+      <main class="flex-1 p-4 sm:p-4 mt-6 overflow-y-auto overflow-x-hidden">
+        <div class="flex items-center justify-between mb-6 px-2">
+        <h1 class="text-2xl font-bold mb-4"> Add New Lead</h1>
+        <button class="px-2 py-2 bg-secondary text-white rounded-lg hover:bg-indigo-600 flex justify-between items-center "><span><img src="images/back.png" alt="" class="h-5"></span> <p class="font-semibold">Back</p> </button>
+</div>
+<section class="bg-white rounded-xl border border-gray-200 p-6">
+
+  <!-- Header -->
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-lg font-semibold text-slate-900">
+      Demographic
+    </h2>
+
+    <button
+      type="button"
+      class="px-5 py-2 rounded-xl border border-indigo-600 text-indigo-600 text-sm font-medium hover:bg-indigo-50" (click)="openCreateFromEmail()"
+    >
+      Create from Email
+    </button>
+  </div>
+
+  <!-- Form -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
+    <!-- Lead ID -->
+    <div>
+      <label class="block text-sm font-medium text-slate-800 mb-2">
+        Lead ID
+      </label>
+      <input
+        type="text"
+        class="w-full h-12 rounded-xl border border-gray-300 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
+    </div>
+
+    <!-- Client Name -->
+    <div>
+      <label class="block text-sm font-medium text-slate-800 mb-2">
+        Client Name
+      </label>
+      <input
+        type="text"
+        class="w-full h-12 rounded-xl border border-gray-300 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
+    </div>
+
+    <!-- Date -->
+    <div>
+      <label class="block text-sm font-medium text-slate-800 mb-2">
+        Date
+      </label>
+      <div class="relative">
+        <input
+          type="text"
+          value="01/01/2026"
+          class="w-full h-12 rounded-xl border border-gray-300 px-4 pr-12 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        />
+        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-indigo-500">
+         <img src="images/calendar.png" alt="" class="h-6">
+        </span>
+      </div>
+    </div>
+
+    <!-- Contact Name -->
+    <div>
+      <label class="block text-sm font-medium text-slate-800 mb-2">
+        Contact Name
+      </label>
+      <input
+        type="text"
+        class="w-full h-12 rounded-xl border border-gray-300 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
+    </div>
+
+    <!-- Contact Phone -->
+    <div>
+      <label class="block text-sm font-medium text-slate-800 mb-2">
+        Contact Phone
+      </label>
+      <input
+        type="text"
+        class="w-full h-12 rounded-xl border border-gray-300 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
+    </div>
+
+    <!-- Contact Email -->
+    <div>
+      <label class="block text-sm font-medium text-slate-800 mb-2">
+        Contact Email
+      </label>
+      <input
+        type="email"
+        class="w-full h-12 rounded-xl border border-gray-300 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
+    </div>
+
+  </div>
+
+  <!-- Actions -->
+  <div class="flex gap-4 mt-8">
+    <button
+      type="button"
+      class="px-8 py-3 rounded-xl bg-secondary text-white font-medium hover:bg-indigo-600"
+    >
+      Save
+    </button>
+
+    <button
+      type="button"
+      class="px-8 py-3 rounded-xl bg-cancel text-white font-medium hover:bg-red-600"
+    >
+      Cancel
+    </button>
+  </div>
+
+</section>
+
+
+      </main>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Overlay -->
+<div
+  *ngIf="showCreateFromEmail"
+  class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+>
+
+  <!-- Modal -->
+  <div class="bg-white rounded-2xl w-[90%] max-w-xl p-8 relative">
+
+    <!-- Close Button -->
+    <button
+      type="button"
+      (click)="closeCreateFromEmail()"
+      class="absolute top-6 right-6 w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100"
+    >
+      ✕
+    </button>
+
+    <!-- Title -->
+    <h2 class="text-2xl  font-semibold text-[#151D48] mb-10">
+      Upload Document
+    </h2>
+
+    <!-- Upload Box -->
+<!-- Upload Box -->
+<div
+  class="border-2 border-dashed border-gray-300 rounded-2xl h-56
+         flex flex-col items-center justify-center text-center mb-10
+         cursor-pointer hover:bg-gray-50"
+  (click)="fileInput.click()"
+>
+
+  <div class="mb-6">
+    <img src="images/upload.png" alt="" class="w-20">
+  </div>
+
+  <p class="text-3xl text-gray-400 font-medium">
+    Upload or Paste here
+  </p>
+
+  <!-- Hidden File Input -->
+  <input
+    #fileInput
+    type="file"
+    class="hidden"
+    (change)="onFileSelected($event)"
+    accept=".pdf,.doc,.docx,.txt,.eml"
+  />
+</div>
+
+
+    <!-- Actions -->
+    <div class="flex gap-6">
+      <button
+        type="button"
+        class="px-8 py-2 rounded-xl bg-secondary text-white font-medium text-lg"
+      >
+        Save
+      </button>
+
+      <button
+        type="button"
+        (click)="closeCreateFromEmail()"
+        class="px-8 py-2 rounded-xl bg-cancel text-white font-medium text-lg"
+      >
+        Cancel
+      </button>
+    </div>
+
+  </div>
+</div>
+
