@@ -5,6 +5,8 @@ import { Corporate } from './components/onboarding/corporate/corporate';
 import { Onboard } from './components/onboarding/onboard/onboard';
 import { LeadDashboard } from './components/leads/lead-dashboard/lead-dashboard';
 import { AddNewLead } from './components/leads/add-new-lead/add-new-lead';
+import { Document } from './components/leads/document/document';
+import { AddTerms } from './components/leads/add-terms/add-terms';
 
 export const routes: Routes = [
     { path: "", redirectTo: "", pathMatch: "full" },
@@ -14,6 +16,12 @@ export const routes: Routes = [
     { path: "leads", component: LeadDashboard, },
     {
         path: "add-lead", component: AddNewLead
+    },
+    {
+       path:"document",component:Document
+    },
+    {
+        path: "add-terms", component: AddTerms
     },
     {
         path: "onboarding", component: Onboard,

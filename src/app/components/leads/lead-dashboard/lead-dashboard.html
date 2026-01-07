@@ -158,199 +158,98 @@
 </thead>
 
 
-    <!-- Table Body -->
-    <tbody>
-<tr class="bg-white border border-gray-200 rounded-xl">
+   <tbody>
+  <tr
+    *ngFor="let lead of leads"
+    class="bg-white border border-gray-200 rounded-xl"
+  >
+    <!-- Checkbox -->
+    <td class="rounded-l-xl px-4 py-3 text-center">
+      <input type="checkbox" class="w-4 h-4 rounded border-gray-300" />
+    </td>
 
-  <td class="rounded-l-xl px-4 py-3 text-center">
-    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-  </td>
+    <!-- Client Name -->
+    <td class="px-4 py-3 text-sm text-slate-700">
+      {{ lead.clientName }}
+    </td>
 
-  <td class="px-4 py-3 text-sm  text-slate-700">
-    ABC Corp
-  </td>
+    <!-- Contact Name -->
+    <td class="px-4 py-3 text-sm text-slate-700">
+      {{ lead.contactName }}
+    </td>
 
-  <td class="px-4 py-3 text-sm text-slate-700">
-    John Doe
-  </td>
+    <!-- Phone -->
+    <td class="px-4 py-3 text-sm text-slate-700">
+      {{ lead.phone }}
+    </td>
 
-  <td class="px-4 py-3 text-sm text-slate-700">
-    +92 300 1234567
-  </td>
+    <!-- Email -->
+    <td class="px-4 py-3 text-sm text-slate-700">
+      {{ lead.email }}
+    </td>
 
-  <td class="px-4 py-3 text-sm text-slate-700">
-    john@abc.com
-  </td>
+    <!-- Source -->
+    <td class="px-4 py-3 text-sm text-slate-700">
+      {{ lead.source }}
+    </td>
 
-  <!-- NEW SOURCE COLUMN -->
-  <td class="px-4 py-3 text-sm text-slate-700">
-    Website
-  </td>
+    <!-- Status -->
+    <td class="px-4 py-3">
+      <span
+        class="px-3 py-1 rounded-full text-xs font-medium"
+        [ngClass]="{
+          'bg-green-100 text-green-700': lead.status === 'Active',
+          'bg-gray-200 text-gray-600': lead.status === 'Inactive'
+        }"
+      >
+        {{ lead.status }}
+      </span>
+    </td>
 
-  <td class="px-4 py-3">
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
-      Active
-    </span>
-  </td>
+    <!-- Actions -->
+    <td class="rounded-r-xl px-4 py-3">
+      <div class="flex justify-end gap-3">
 
-  <td class="rounded-r-xl px-4 py-3">
-    <div class="flex justify-end gap-3">
+        <div
+          class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center cursor-pointer"
+          (click)="editLead(lead)"
+        >
+          <img src="images/edit.png" class="w-4 h-4" />
+        </div>
 
-      <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center">
-        <img src="images/edit.png" class="w-4 h-4" />
+        <div
+          class="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center cursor-pointer"
+          (click)="viewLead(lead)"
+        >
+          <img src="images/view.png" class="w-4 h-4" />
+        </div>
+
+        <div
+          class="w-7 h-7 rounded-full bg-yellow-100 flex items-center justify-center cursor-pointer"
+          (click)="assignLead(lead)"
+        >
+          <img src="images/user.png" class="w-4 h-4" />
+        </div>
+
+        <div
+          class="w-7 h-7 rounded-full bg-teal-100 flex items-center justify-center cursor-pointer"
+          (click)="sendLead(lead)"
+        >
+          <img src="images/send.png" class="w-4 h-4" />
+        </div>
+
+        <div
+          class="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center cursor-pointer"
+          (click)="deleteLead(lead)"
+        >
+          <img src="images/file.png" class="w-4 h-4" />
+        </div>
+
       </div>
+    </td>
+  </tr>
+</tbody>
 
-      <div class="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
-        <img src="images/view.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-yellow-100 flex items-center justify-center">
-        <img src="images/user.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-teal-100 flex items-center justify-center">
-        <img src="images/send.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center">
-        <img src="images/file.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center">
-        <img src="images/files.png" class="w-4 h-4" />
-      </div>
-
-    </div>
-  </td>
-</tr>
-<tr class="bg-white border border-gray-200 rounded-xl">
-
-  <td class="rounded-l-xl px-4 py-3 text-center">
-    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-  </td>
-
-  <td class="px-4 py-3 text-sm  text-slate-700">
-    ABC Corp
-  </td>
-
-  <td class="px-4 py-3 text-sm text-slate-700">
-    John Doe
-  </td>
-
-  <td class="px-4 py-3 text-sm text-slate-700">
-    +92 300 1234567
-  </td>
-
-  <td class="px-4 py-3 text-sm text-slate-700">
-    john@abc.com
-  </td>
-
-  <!-- NEW SOURCE COLUMN -->
-  <td class="px-4 py-3 text-sm text-slate-700">
-    Website
-  </td>
-
-  <td class="px-4 py-3">
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
-      Active
-    </span>
-  </td>
-
-  <td class="rounded-r-xl px-4 py-3">
-    <div class="flex justify-end gap-3">
-
-      <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center">
-        <img src="images/edit.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
-        <img src="images/view.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-yellow-100 flex items-center justify-center">
-        <img src="images/user.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-teal-100 flex items-center justify-center">
-        <img src="images/send.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center">
-        <img src="images/file.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center">
-        <img src="images/files.png" class="w-4 h-4" />
-      </div>
-
-    </div>
-  </td>
-</tr>
-<tr class="bg-white border border-gray-200 rounded-xl">
-
-  <td class="rounded-l-xl px-4 py-3 text-center">
-    <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
-  </td>
-
-  <td class="px-4 py-3 text-sm  text-slate-700">
-    ABC Corp
-  </td>
-
-  <td class="px-4 py-3 text-sm text-slate-700">
-    John Doe
-  </td>
-
-  <td class="px-4 py-3 text-sm text-slate-700">
-    +92 300 1234567
-  </td>
-
-  <td class="px-4 py-3 text-sm text-slate-700">
-    john@abc.com
-  </td>
-
-  <!-- NEW SOURCE COLUMN -->
-  <td class="px-4 py-3 text-sm text-slate-700">
-    Website
-  </td>
-
-  <td class="px-4 py-3">
-    <span class="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
-      Active
-    </span>
-  </td>
-
-  <td class="rounded-r-xl px-4 py-3">
-    <div class="flex justify-end gap-3">
-
-      <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center">
-        <img src="images/edit.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
-        <img src="images/view.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-yellow-100 flex items-center justify-center">
-        <img src="images/user.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-teal-100 flex items-center justify-center">
-        <img src="images/send.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center">
-        <img src="images/file.png" class="w-4 h-4" />
-      </div>
-
-      <div class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center">
-        <img src="images/files.png" class="w-4 h-4" />
-      </div>
-
-    </div>
-  </td>
-</tr>
-
-    </tbody>
 
   </table>
 </div>

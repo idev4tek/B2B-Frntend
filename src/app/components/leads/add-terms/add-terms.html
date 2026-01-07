@@ -1,0 +1,94 @@
+<div class="min-h-screen bg-gray-50 overflow-x-hidden">
+    <div class="flex">
+
+        <!-- Sidebar -->
+        <div class=" 
+    fixed inset-y-0 left-0
+    w-[280px] 
+    z-[2147483646]
+    transform transition-transform duration-300
+    -translate-x-full lg:translate-x-0 bg-primary
+  ">
+            <app-lead-sidebar></app-lead-sidebar>
+        </div>
+
+
+        <!-- Main -->
+        <div class="flex-1 lg:ml-[280px] flex flex-col min-w-0">
+
+            <!-- Header -->
+            <header class="sticky top-0 z-50 bg-white">
+                <app-header></app-header>
+            </header>
+
+
+            <div class="title">
+                <div class="flex items-center justify-between  p-6">
+                    <h1 class="text-3xl font-bold text-[#151D48]"> Term sheet</h1>
+                    <button
+                        class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-indigo-600 flex justify-between items-center ">
+                        <span><img src="images/back.png" alt="" class="h-5"></span>
+                        <p class="font-semibold">Back</p>
+                    </button>
+                </div>
+            </div>
+
+            <section class="bg-white rounded-2xl border border-gray-200 m-6 p-3 ">
+
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-semibold text-[#151D48]">
+                        Sections
+                    </h2>
+
+                    <button type="button" (click)="addSection()"
+                        class="px-4 py-2 rounded-lg bg-secondary text-white text-sm font-medium flex items-center gap-2">
+                        + Add New Section
+                    </button>
+                </div>
+
+                <!-- Sections List -->
+                <div *ngFor="let section of sections; let i = index" class="mb-8">
+
+                    <!-- Section Header -->
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-semibold text-[#151D48]">
+                            {{ section.code }}
+                        </span>
+
+                        <button type="button" class="text-red-500 text-sm font-medium" (click)="deleteSection(i)">
+                            Delete Section
+                        </button>
+                    </div>
+
+                    <!-- Section Title -->
+                    <input type="text" placeholder="" class="w-full h-11 rounded-xl border border-gray-300 px-4 mb-4
+             text-sm focus:outline-none focus:ring-2 focus:ring-secondary" />
+
+                    <!-- Notes -->
+                    <label class="block text-sm font-medium text-[#151D48] mb-2">
+                        Notes
+                    </label>
+
+                    <textarea rows="4" class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm
+             focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+
+                </div>
+
+                <!-- Actions -->
+                <div class="flex gap-4 mt-6">
+                    <button type="button" class="px-8 py-3 rounded-xl bg-secondary text-white font-medium">
+                        Save
+                    </button>
+
+                    <button type="button" class="px-8 py-3 rounded-xl bg-cancel text-white font-medium">
+                        Cancel
+                    </button>
+                </div>
+
+            </section>
+
+
+        </div>
+    </div>
+</div>

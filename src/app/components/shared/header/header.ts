@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { comma } from 'postcss/lib/list';
+import { SidebarService } from '../services/sidebar.service';
 
 interface Language {
   code: string;
@@ -16,10 +17,16 @@ interface Language {
 })
 export class Header {
 
+   constructor(public sidebarService: SidebarService) {}
+
+   toggleSidebar() {
+    console.log('[Header] hamburger clicked');
+    this.sidebarService.toggle();
+  }
   languages: Language[] = [
-    { code: 'en', name: 'English (US)', flag: 'public/flags/us.svg' },
-    { code: 'ur', name: 'Urdu', flag: 'public/flags/pk.svg' },
-    { code: 'ar', name: 'Arabic', flag: 'public/flags/sa.svg' },
+    { code: 'en', name: 'English (US)', flag: 'images/united-states-of-america.png' },
+    { code: 'ur', name: 'Urdu', flag: 'images/pakistan.png' },
+    { code: 'ar', name: 'Arabic', flag: 'images/saudi-arabia.png' },
   ];
 
   selectedLanguage: Language = this.languages[0];
@@ -36,4 +43,7 @@ export class Header {
     // future use (i18n / ngx-translate)
     console.log('Language changed to:', lang.code);
   }
+
+  isOpen = false;
+
 }

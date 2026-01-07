@@ -21,7 +21,7 @@ export interface Facility {
   facilityName: string;
   phase: string;
   amount: number;
-  date: string | null;   
+  date: string | null;
   status: 'Active' | 'Draft';
 
   gracePeriod: number | null;
@@ -40,4 +40,6 @@ export interface Repayment {
   amount: number;
   status: 'Draft' | 'Paid';
   transactionNo?: string;
+  bank?: string;
+
 }

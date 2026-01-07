@@ -1,18 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SidebarService } from '../services/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule, RouterLink,RouterLinkActive],
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
-  styleUrl: './sidebar.css',
 })
-export class Sidebar {
+export class Sidebar implements OnInit {
+
   isOpen = false;
 
-  toggle() {
-    this.isOpen = !this.isOpen;
+  constructor(public sidebarService: SidebarService) {}
+
+  ngOnInit() {
+    this.sidebarService.isOpen$.subscribe(value => {
+      console.log('[Sidebar] isOpen changed →', value);
+      this.isOpen = value;
+    });
   }
-  
 }

@@ -1,26 +1,43 @@
-<header class="w-full bg-primary px-4 lg:px-6 py-4  " >
+<header class="w-full bg-primary px-4 lg:px-6 py-4  ">
   <div class="flex items-center justify-between gap-4">
 
     <!-- Logo -->
-    <div class="flex items-center gap-2 shrink-0">
+    <div class="hidden lg:flex items-center gap-2 shrink-0">
       <img src="public/logos.png" alt="Logo" class="h-14  ">
     </div>
-
+<button
+  type="button"
+  class="
+    lg:hidden
+    p-2
+    rounded-xl
+    bg-white
+    shadow-md
+  "
+(click)="toggleSidebar()">
+  <svg
+    class="w-6 h-6 text-gray-800"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+  >
+    <line x1="3" y1="6" x2="21" y2="6" />
+    <line x1="3" y1="12" x2="21" y2="12" />
+    <line x1="3" y1="18" x2="21" y2="18" />
+  </svg>
+</button>
     <!-- Search (hide on mobile) -->
     <div class="hidden md:flex flex-1 max-w-xl">
       <div class="relative w-full">
         <span class="absolute inset-y-0 left-4 flex items-center text-white">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
         </span>
-        <input
-          type="text"
-          placeholder="Search here..."
-          class="w-full rounded-full bg-[#0f2457] py-3 pl-12 pr-4 text-sm text-white outline-none focus:ring-2 focus:ring-indigo-500"
-        />
+        <input type="text" placeholder="Search here..."
+          class="w-full rounded-full bg-[#0f2457] py-3 pl-12 pr-4 text-sm text-white outline-none focus:ring-2 focus:ring-indigo-500" />
       </div>
     </div>
 
@@ -28,42 +45,32 @@
     <div class="flex items-center gap-4 lg:gap-6">
 
       <!-- Language -->
-    <!-- Language Dropdown -->
-<div class="relative">
-  <button
-    (click)="toggleLang()"
-    class="flex items-center gap-2 text-sm cursor-pointer"
-  >
-    <img [src]="selectedLanguage.flag" class="h-7 lg:h-8" />
-    <span class="hidden lg:inline">{{ selectedLanguage.name }}</span>
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
-      viewBox="0 0 24 24">
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
-  </button>
+      <!-- Language Dropdown -->
+      <div class="relative">
+        <button (click)="toggleLang()" class="flex items-center gap-2 text-sm cursor-pointer">
+          <img [src]="selectedLanguage.flag" class="h-7 lg:h-8" />
+          <span class="hidden lg:inline">{{ selectedLanguage.name }}</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
 
-  <!-- Dropdown -->
-  <div
-    *ngIf="isLangOpen"
-    class="absolute right-0 mt-2 w-44 bg-[#0f2457] rounded-lg shadow-lg overflow-hidden z-50"
-  >
-    <button
-      *ngFor="let lang of languages"
-      (click)="selectLanguage(lang)"
-      class="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-[#142f6b]"
-    >
-      <img [src]="lang.flag" class="h-5" />
-      <span>{{ lang.name }}</span>
-    </button>
-  </div>
-</div>
+        <!-- Dropdown -->
+        <div *ngIf="isLangOpen"
+          class="absolute right-0 mt-2 w-44 bg-[#0f2457] rounded-lg shadow-lg overflow-hidden z-50">
+          <button *ngFor="let lang of languages" (click)="selectLanguage(lang)"
+            class="w-full flex items-center gap-3 px-4 py-2 text-sm hover:bg-[#142f6b]">
+            <img [src]="lang.flag" class="h-5" />
+            <span>{{ lang.name }}</span>
+          </button>
+        </div>
+      </div>
 
 
       <!-- Notification -->
       <div class="relative">
         <button class="p-2 rounded-lg bg-[#0f2457] hover:bg-[#142f6b] transition">
-          <svg class="w-5 h-5 " fill="none" stroke="currentColor"
-            stroke-width="2" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 " fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
             <path d="M13.73 21a2 2 0 01-3.46 0" />
           </svg>
@@ -73,17 +80,13 @@
 
       <!-- User -->
       <div class="flex items-center gap-2 lg:gap-3 cursor-pointer">
-        <img
-          src="public/rectangle13932257-mwiw-200h.png"
-          alt="User"
-          class="w-5 h-5 lg:w-10 lg:h-10 rounded-full object-cover"
-        />
+        <img src="public/rectangle13932257-mwiw-200h.png" alt="User"
+          class="w-5 h-5 lg:w-10 lg:h-10 rounded-full object-cover" />
         <div class="hidden lg:block leading-tight">
           <p class="text-sm font-semibold ">Musfiq</p>
           <p class="text-xs ">Admin</p>
         </div>
-        <svg class="hidden lg:block w-4 h-4 " fill="none" stroke="currentColor"
-          stroke-width="2" viewBox="0 0 24 24">
+        <svg class="hidden lg:block w-4 h-4 " fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <polyline points="6 9 12 15 18 9" />
         </svg>
       </div>
