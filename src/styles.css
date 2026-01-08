@@ -26,5 +26,10 @@
 .bg-cancel{
     background-color: #F23C3F;
 }
+button{
+    cursor: pointer;
+    
+
+}
 
 @import "tailwindcss";

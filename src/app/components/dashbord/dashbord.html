@@ -2,13 +2,11 @@
   <div class="flex">
 
     <!-- Sidebar -->
-  <div
-  class=" 
+    <div class=" 
    
-  " 
->
-  <app-sidebar></app-sidebar>
-</div>
+  ">
+      <app-sidebar></app-sidebar>
+    </div>
 
 
     <!-- Main -->
@@ -21,13 +19,94 @@
 
       <!-- Content -->
       <main class="flex-1 p-4 sm:p-6 overflow-y-auto overflow-x-hidden">
-        <p class="text-xl sm:text-2xl font-bold mb-4">Dashboard</p>
+        <div class="flex items-center gap-8 mb-4">
+          <button class="px-4 py-2  text-white rounded-lg" [class.bg-blue-700]="view === 'dashboard'"
+            [class.bg-gray-400]="view !== 'dashboard'" (click)="showDahboard()"> Dashboard </button>
 
-        <app-sale></app-sale>
+          <button class="px-4 py-2 text-white rounded-lg" [class.bg-blue-700]="view === 'tasks'"
+            [class.bg-gray-400]="view !== 'tasks'" (click)="showTasks()">
+            Tasks
+          </button>
+        </div>
+        <div class="dashboard " *ngIf="view === 'dashboard'">
 
-        <!-- Mobile bottom menu only -->
-        <div class="">
-          <app-menu-bottom></app-menu-bottom>
+          <app-sale></app-sale>
+
+          <!-- Mobile bottom menu only -->
+          <div class="">
+            <app-menu-bottom></app-menu-bottom>
+          </div>
+        </div>
+
+        <div class="task" *ngIf="view === 'tasks'">
+          <section class="bg-white rounded-xl p-4">
+
+            <!-- Title -->
+            <h2 class="text-2xl font-bold text-[#151D48] mb-4">Tasks</h2>
+            <p class="text-sm text-slate-500 mb-3">Task List</p>
+
+            <!-- Table -->
+            <div class="overflow-x-auto">
+              <table class="w-full border-separate border-spacing-y-3 text-sm">
+
+                <!-- Head -->
+                <thead>
+                  <tr class="bg-[#F9FAFB] rounded-xl">
+                    <th class="px-4 py-3 text-left">
+                      <input type="checkbox" />
+                    </th>
+                    <th class="px-4 py-3 text-left font-semibold">Task ID</th>
+                    <th class="px-4 py-3 text-left font-semibold">Task Description</th>
+                    <th class="px-4 py-3 text-left font-semibold">Borrower Name</th>
+                    <th class="px-4 py-3 text-left font-semibold">Facility No</th>
+                    <th class="px-4 py-3 text-left font-semibold">Type</th>
+                    <th class="px-4 py-3 text-left font-semibold">Assigned Date</th>
+                    <th class="px-4 py-3 text-left font-semibold">Assigned To</th>
+                    <th class="px-4 py-3 text-center font-semibold">Action</th>
+                  </tr>
+                </thead>
+
+                <!-- Body -->
+                <tbody>
+                  <tr *ngFor="let task of tasks" class="bg-white border border-gray-200 rounded-xl">
+                    <td class="px-4 py-3">
+                      <input type="checkbox" />
+                    </td>
+
+                    <td class="px-4 py-3">{{ task.id }}</td>
+                    <td class="px-4 py-3">{{ task.description }}</td>
+                    <td class="px-4 py-3">{{ task.BorrowerName }}</td>
+                    <td class="px-4 py-3">{{ task.facilityNo }}</td>
+                    <td class="px-4 py-3">{{ task.type }}</td>
+                    <td class="px-4 py-3">{{ task.assignedDate }}</td>
+                    <td class="px-4 py-3">{{ task.assignedTo }}</td>
+
+                    <!-- Actions -->
+                    <td class="px-4 py-3">
+                      <div class="flex justify-center gap-3">
+
+                        <!-- Approve -->
+                        <button class="w-7 h-7 rounded-full flex items-center justify-center
+                       bg-green-200 " (click)="approve(task)" [class.opacity-40]="task.approved">
+                          <img src="images/Tick-2.png" alt="" class="h-6">
+                        </button>
+
+                        <!-- Reject -->
+                        <button class="w-7 h-7 rounded-full flex items-center justify-center
+                       bg-red-200 text-red-600" (click)="reject(task)">
+                          <img src="images/cancel.png" alt="" class="h-6">
+                        </button>
+
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+
+              </table>
+            </div>
+
+          </section>
+
         </div>
       </main>
 
